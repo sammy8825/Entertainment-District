@@ -1,0 +1,23 @@
+{
+  "name": "entertainment-district",
+  "version": "1.0.0",
+  "description": "[Figma file](https://www.figma.com/file/Jvnu1QeByzsi0zHHyawrUv/Entertainment-District?node-id=0%3A1)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammy8825/Entertainment-District.git"
+  },
+  "author": "Samarth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sammy8825/Entertainment-District/issues"
+  },
+  "homepage": "https://github.com/sammy8825/Entertainment-District#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
+}
