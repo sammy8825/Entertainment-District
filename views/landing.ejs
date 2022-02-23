@@ -1,21 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Entertainment</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-<head>
-    <title>Document</title>
+    <style></style>
+  </head>
 
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-
-<body>
+  <body>
     <!-- Navbar -->
-    <h1><%= message %></h1>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-</body>
+    <nav class="navbar my-style-nav">
+      <div class="fluid-container">
+        <a
+          class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
+          href="#"
+        >
+          <img
+            src="/images/logoed.png"
+            alt="Entertainment"
+            width="135"
+            height="45"
+            class="rounded-pill"
+          />
+        </a>
+      </div>
 
+      <div class="pe-4">
+        <a href="" class="myLoginButton"><button>LOGIN</button></a>
+      </div>
+    </nav>
+
+    <!-- main body -->
+    <div class="banner mt-5">
+      <h1 class="bannerContent">
+        KNOW WHAT YOU ARE WATCHING <br />
+        AT <br />
+        ENTERTAINMENT DISTRICT
+      </h1>
+    </div>
+
+    <!-- Sub body -->
+    <div class="container pt-5 pb-5">
+      <div class="row">
+        <div class="col-12 col-md-6 myDiv">
+          <div class="mb-5">
+            <h2 class="text-uppercase text-center smallBannerContent">
+              Get Reviews of all the songs and series
+            </h2>
+            <div class="d-flex justify-content-around">
+              <img src="/images/f.jpg" alt="movies" class="smallBanner" />
+              <img src="/images/f.jpg" alt="songs" class="smallBanner" />
+              <img src="/images/f.jpg" alt="Anime" class="smallBanner" />
+            </div>
+            <a href="" class="d-block myLoginButton2"><button>LOGIN</button></a>
+          </div>
+        </div>
+        <div class="col-6 d-none d-md-block">
+          <img src="/images/f.jpg" alt="inner view" class="previewBanner" />
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="text-center">&copy; Samarth Bhatt</footer>
+  </body>
 </html>

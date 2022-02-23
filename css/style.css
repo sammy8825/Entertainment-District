@@ -1,0 +1,124 @@
+/* Nullifying the previous styles */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* navbar style start */
+.my-style-nav {
+  background-color: #777777;
+}
+
+/* navbar style ends*/
+
+/* banner style starts */
+
+.banner {
+  background-image: url("/images/headphones.png");
+  height: 70vh;
+  background-size: 90vw 70vh;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.bannerContent {
+  width: 45vw;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 18%;
+  transform: translate(-18%, -40%);
+}
+
+.smallBanner {
+  width: 35%;
+  height: 70%;
+  margin: 5% 2%;
+}
+
+.previewBanner {
+  width: 90%;
+  margin-left: 15%;
+}
+
+/* banner style ends*/
+
+/* login button style starts */
+
+.myDiv {
+  position: relative;
+  height: auto;
+}
+
+.myLoginButton2 {
+  margin: 5% auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.myLoginButton2 button {
+  width: 15vw;
+  padding: 7%;
+}
+
+.myLoginButton button,
+.myLoginButton2 button {
+  outline: none;
+  border: none;
+
+  border-radius: 150px;
+  color: #fff;
+  background-color: #000;
+}
+
+.myLoginButton button {
+  width: 10vw;
+  padding: 5%;
+}
+
+/* login button style ends */
+
+/* Footer style starts */
+
+footer {
+  background-color: #888787;
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  color: white;
+
+  display: block;
+}
+
+/* Footer style ends*/
+
+/* Responsive design for landing.ejs file */
+@media only screen and (max-width: 648px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .myLoginButton {
+    display: none;
+  }
+
+  .myLoginButton2 button {
+    width: 25vw;
+    padding: 7%;
+  }
+
+  .banner {
+    height: 30vh;
+    background-size: 90vw 30vh;
+  }
+
+  .bannerContent {
+    width: 50vw;
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 15%;
+    transform: translate(-15%, -25%);
+    font-size: 12px;
+  }
+}
