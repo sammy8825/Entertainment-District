@@ -7,8 +7,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
-
-    <style></style>
   </head>
 
   <body>
@@ -28,10 +26,13 @@
           />
         </a>
       </div>
-
+      <% if (!authenticated) { %>
       <div class="pe-4">
-        <a href="" class="myLoginButton"><button>LOGIN</button></a>
+        <a href="login" class="myLoginButton"><button>LOGIN</button></a>
       </div>
+      <% } else { %>
+      <img src="/images/user.png" alt="user" class="user " />
+      <% } %>
     </nav>
 
     <!-- main body -->
@@ -56,7 +57,11 @@
               <img src="/images/f.jpg" alt="songs" class="smallBanner" />
               <img src="/images/f.jpg" alt="Anime" class="smallBanner" />
             </div>
-            <a href="" class="d-block myLoginButton2"><button>LOGIN</button></a>
+            <% if (!authenticated) { %>
+            <a href="login" class="d-block myLoginButton2"
+              ><button>LOGIN</button></a
+            >
+            <% } %>
           </div>
         </div>
         <div class="col-6 d-none d-md-block">
