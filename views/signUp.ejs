@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Entertainment</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar my-style-nav">
+      <div class="fluid-container">
+        <a
+          class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
+          href="/"
+        >
+          <img
+            src="/images/logoed.png"
+            alt="Entertainment"
+            width="135"
+            height="45"
+            class="rounded-pill"
+          />
+        </a>
+      </div>
+
+      <p class="signUpLink">
+        Already a member? <a href="/login">Sign In --></a>
+      </p>
+    </nav>
+
+    <div class="signUp loginForm">
+      <h1>Welcome to Entertainment District</h1>
+
+      <form action="/signUp" method="post">
+        <label for="email">Email Address </label>
+        <input type="email" name="email" id="emailInput" />
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="passInput" />
+
+        <label for="password">Confirm Password</label>
+        <input type="password" name="confirmPassword" id="passInput" />
+
+        <input type="submit" value="Join Us" />
+      </form>
+    </div>
+  </body>
+</html>

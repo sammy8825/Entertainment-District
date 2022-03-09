@@ -7,6 +7,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    <!-- JS -->
+    <script src="../js/landing.js" defer></script>
   </head>
 
   <body>
@@ -15,7 +18,7 @@
       <div class="fluid-container">
         <a
           class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
-          href="/"
+          href="/home"
         >
           <img
             src="/images/logoed.png"
@@ -26,10 +29,12 @@
           />
         </a>
       </div>
-      <div class="pe-4">
-        <a href="login" class="myLoginButton"><button>LOGIN</button></a>
-      </div>
+      <img src="/images/user.png" alt="user" class="user" />
     </nav>
+    <div class="dropdown">
+      <a href="/profile">My Profile</a>
+      <a href="/"><% creds.loggedIn = false %>LOGOUT</a>
+    </div>
 
     <!-- main body -->
     <div class="banner mt-5">
@@ -41,28 +46,9 @@
     </div>
 
     <!-- Sub body -->
-    <div class="container pt-5 pb-5">
-      <div class="row">
-        <div class="col-12 col-md-6 myDiv">
-          <div class="mb-5">
-            <h2 class="text-uppercase text-center smallBannerContent">
-              Get Reviews of all the songs and series
-            </h2>
-            <div class="d-flex justify-content-around">
-              <img src="/images/f.jpg" alt="movies" class="smallBanner" />
-              <img src="/images/f.jpg" alt="songs" class="smallBanner" />
-              <img src="/images/f.jpg" alt="Anime" class="smallBanner" />
-            </div>
-            <a href="login" class="d-block myLoginButton2"
-              ><button>LOGIN</button></a
-            >
-          </div>
-        </div>
-        <div class="col-6 d-none d-md-block">
-          <img src="/images/f.jpg" alt="inner view" class="previewBanner" />
-        </div>
-      </div>
-    </div>
+
+    <div class="cardContainer"></div>
+
     <!-- footer -->
     <footer class="text-center">&copy; Samarth Bhatt</footer>
   </body>
