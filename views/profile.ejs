@@ -9,29 +9,86 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
     <!-- JS -->
+    <script src="../js/animation.js" defer></script>
+    <script src="../js/modal2.js" defer></script>
   </head>
 
   <body>
     <!-- Navbar -->
     <nav class="navbar my-style-nav">
-      <div class="fluid-container">
-        <a
-          class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
-          href="/home"
-        >
-          <img
-            src="/images/logoed.png"
-            alt="Entertainment"
-            width="135"
-            height="45"
-            class="rounded-pill"
-          />
-        </a>
+      <div class="d-flex justify-content-between myWidth">
+        <div class="fluid-container">
+          <a
+            class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
+            href="/home"
+          >
+            <img
+              src="/images/logoed.png"
+              alt="Entertainment"
+              width="135"
+              height="45"
+              class="rounded-pill"
+            />
+          </a>
+        </div>
+        <div class="user d-flex justify-content-between align-middle">
+          <p><%= cred.username%></p>
+          <img src="/images/user.jpg" alt="user" />
+        </div>
       </div>
     </nav>
+    <div class="dropdown">
+      <a href="/profile">My Profile</a>
+      <a href="/">LOGOUT</a>
+    </div>
+
+    <div class="container pt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/images/user.jpg" alt="user" class="userProfile" />
+        </div>
+        <div class="col-md-6 loginForm myDetails">
+          <div class="pt-5">
+            <label for="username">Username </label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value= <%=cred.username %>
+            readonly/>
+
+            <label for="email">Email Address </label>
+            <input
+            type="email"
+            name="email"
+            id="emailInput"
+              value= <%=cred.email %>
+            readonly/>
 
 
-    <!-- footer -->
-    <footer class="text-center">&copy; Samarth Bhatt</footer>
+            <p class="changePass">
+              <button class="changePassBtn">Change Password</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="forgotModal">
+        <div class="myModal">
+          <div class="d-flex justify-content-end">
+            <button class="closeButton">X</button>
+          </div>
+          <div class="d-block pt-5 pb-5 displayMessage">
+            <form action="" method="post">
+              <label for="newPass">New Password</label>
+              <input type="password" name="newPass" id="newPass" />
+              <label for="confNewPass">Confirm New Password</label>
+              <input type="password" name="confNewPass" id="confNewPass" />
+              <input type="submit" value="SEND" class="send" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

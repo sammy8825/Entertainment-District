@@ -2,14 +2,16 @@ const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-let urlencodedParser = bodyParser.urlencoded({ extended: false });
+const mongoose = require("mongoose");
+const req = require("express/lib/request");
 
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
+const User = require("./js/userSchemaFile");
+const { createBrotliDecompress } = require("zlib");
 const app = express();
-
 const port = 8800;
 
-let creds,
-  users = [];
+let creds;
 
 app.use("/images", express.static("images"));
 app.use("/css", express.static("css"));
@@ -39,72 +41,152 @@ app.get("/", (req, res) => {
 
 // Directing to the login page
 app.get("/login", (req, res) => {
-  res.render("login");
+  res.render("login", { message: "" });
+});
+
+// For forgot password section
+app.post("/forgot", urlencodedParser, (req, res) => {
+  console.log(` The email id is : ${req.body.forgotMail}`);
+  res.render("login", { message: "Password reset mail has been sent!!" });
 });
 
 // Directing towards the signup Page
 app.get("/signUp", (req, res) => {
-  res.render("signUp");
+  res.render("signUp", { message: "" });
 });
 
 app.post("/signUp", urlencodedParser, (req, res) => {
   creds = {
+    username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
-    confirmPassword: req.body.confirmPassword,
-    loggedIn: true,
   };
 
-  let newUser = true;
-
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].email === creds.email) {
-      newUser = false;
-      break;
-    }
-  }
-  if (!newUser && !creds.loggedIn) {
-    res.send("User Exists...");
-  } else if (creds.password === creds.confirmPassword) {
-    users.push({
+  if (req.body.password === req.body.confirmPassword) {
+    let newUser = new User({
+      username: creds.username,
       email: creds.email,
-      password: creds.password,
+      password: req.body.password,
       loggedIn: true,
     });
-    console.log(users);
-    res.render("home");
+    newUser.save((err, result) => {
+      if (err) {
+        res.render("signup", { message: "User Exists!!!!" });
+      } else {
+        // console.log(result);
+        User.findOneAndUpdate(
+          { username: creds.username },
+          { loggedIn: true },
+          (err, data) => {
+            if (err) {
+              console.log(err);
+            } else {
+              let cred = {
+                username: data.username,
+                email: data.email,
+              };
+              res.render("home", { cred });
+            }
+          }
+        );
+      }
+    });
   } else {
-    res.send("Passwords do no match....");
+    res.render("signup", { message: "Passwords do no match...." });
   }
 });
 
 // Directing to the home page
 app.get("/home", (req, res) => {
-  res.render("home", { creds });
+  User.findOne(
+    { username: creds.username },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let cred = {
+          username: data.username,
+          email: data.email,
+        };
+        res.render("home", { cred });
+      }
+    }
+  );
 });
 
 // Checking the login credentials and redirecting accordingly
 app.post("/login", urlencodedParser, (req, res) => {
-  creds = { email: req.body.email, password: req.body.password };
+  creds = { username: req.body.user, password: req.body.password };
   // console.log(creds);
-  let flag = false;
-  for (let i = 0; i < users.length; i++) {
-    if (
-      creds.email === users[i].email &&
-      creds.password === users[i].password
-    ) {
-      creds.loggedIn = true;
-      res.render("home", { creds });
-      flag = true;
-    } else flag = false;
-  }
-  if (!flag) res.send("Opps!!! Wrong credentials");
+
+  User.find({ username: creds.username }, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      if (result.length == 0) {
+        res.render("login", { message: "No such user found!!!!" });
+      } else if (result[0].password === creds.password) {
+        User.findOneAndUpdate(
+          { username: creds.username },
+          { loggedIn: true },
+          (err, data) => {
+            if (err) {
+              console.log(err);
+            } else {
+              let cred = {
+                username: data.username,
+                email: data.email,
+              };
+              res.render("home", { cred });
+            }
+          }
+        );
+      } else {
+        res.render("login", { message: "Wrong Password !! Try Again" });
+      }
+    }
+  });
 });
 
 //Directing to the user profile page
 app.get("/profile", (req, res) => {
-  res.render("profile", { creds });
+  User.find({ loggedIn: true }, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let cred = {
+        username: data[0].username,
+        email: data[0].email,
+      };
+      res.render("profile", { cred });
+    }
+  });
 });
+
+app.get("/logout", (req, res) => {
+  User.findOneAndUpdate(
+    { username: creds.username },
+    { loggedIn: false },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("landing");
+      }
+    }
+  );
+});
+
+// Connecting to the database
+
+mongoose.connect(
+  "mongodb://localhost/mydb",
+  () => {
+    console.log("Connected!!!");
+  },
+  (e) => console.log(e)
+);
+
+// Starting a server
 app.listen(port, () => {
   console.log(`Listening to post ${port}`);
 });

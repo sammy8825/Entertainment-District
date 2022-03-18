@@ -9,31 +9,36 @@
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
     <!-- JS -->
-    <script src="../js/landing.js" defer></script>
+    <script src="../js/animation.js" defer></script>
   </head>
 
   <body>
     <!-- Navbar -->
     <nav class="navbar my-style-nav">
-      <div class="fluid-container">
-        <a
-          class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
-          href="/home"
-        >
-          <img
-            src="/images/logoed.png"
-            alt="Entertainment"
-            width="135"
-            height="45"
-            class="rounded-pill"
-          />
-        </a>
+      <div class="d-flex justify-content-between myWidth">
+        <div class="fluid-container">
+          <a
+            class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
+            href="/home"
+          >
+            <img
+              src="/images/logoed.png"
+              alt="Entertainment"
+              width="135"
+              height="45"
+              class="rounded-pill"
+            />
+          </a>
+        </div>
+        <div class="user d-flex justify-content-between align-middle">
+          <p><%= cred.username%></p>
+          <img src="/images/user.jpg" alt="user" />
+        </div>
       </div>
-      <img src="/images/user.png" alt="user" class="user" />
     </nav>
     <div class="dropdown">
       <a href="/profile">My Profile</a>
-      <a href="/"><% creds.loggedIn = false %>LOGOUT</a>
+      <a href="/logout">LOGOUT</a>
     </div>
 
     <!-- main body -->
@@ -46,10 +51,39 @@
     </div>
 
     <!-- Sub body -->
+    <h1 class="text-center p-5">Where do you want to go User!!!!</h1>
+    <div class="cardContainer pb-5">
+      <div class="card-section">
+        <div class="card-box">
+          <div class="card-text">
+            <div class="heading">Movie</div>
+            <div class="para">Its a movie time!!</div>
+          </div>
+          <div class="card-info">
+            <button class="card-btn">Go to Movies</button>
+          </div>
+        </div>
 
-    <div class="cardContainer"></div>
+        <div class="card-box">
+          <div class="card-text">
+            <div class="heading">Songs</div>
+            <div class="para">Lets Listen to some songs!!</div>
+          </div>
+          <div class="card-info">
+            <button class="card-btn">Listen to Songs</button>
+          </div>
+        </div>
 
-    <!-- footer -->
-    <footer class="text-center">&copy; Samarth Bhatt</footer>
+        <div class="card-box">
+          <div class="card-text">
+            <div class="heading">Series</div>
+            <div class="para">Lets watch some series!!</div>
+          </div>
+          <div class="card-info">
+            <button class="card-btn">Watch some Series</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

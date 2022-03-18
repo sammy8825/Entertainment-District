@@ -8,6 +8,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    <!-- JS -->
+    <script src="../js/modal.js" defer></script>
   </head>
   <body>
     <div class="logoBanner m-5 d-flex justify-content-center">
@@ -16,11 +19,14 @@
 
     <div class="loginForm">
       <form action="/login" method="post">
-        <label for="email">Email Address </label>
-        <input type="email" name="email" id="emailInput" />
+        <p class="message"><%= message %></p>
+
+        <label for="user">Username</label>
+        <input type="text" name="user" id="emailInput" />
 
         <label for="password"
-          >Password <span><a href="">Forgot Password?</a></span></label
+          >Password
+          <span><a href="" id="forgot">Forgot Password?</a></span></label
         >
         <input type="password" name="password" id="passInput" />
 
@@ -28,6 +34,21 @@
       </form>
 
       <p class="signUpRedirect">New Here? <a href="/signUp">Join In</a></p>
+    </div>
+
+    <div class="forgotModal">
+      <div class="myModal">
+        <div class="d-flex justify-content-end">
+          <button class="closeButton">X</button>
+        </div>
+        <div class="d-block pt-5 pb-5 displayMessage">
+          <form action="/forgot" method="post">
+            <label for="forgotMail">Email ID</label>
+            <input type="email" name="forgotMail" id="forgotMailID" />
+            <input type="submit" value="SEND" class="send" />
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
