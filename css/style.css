@@ -480,6 +480,10 @@ footer {
   background-color: rgba(94, 94, 94, 0.5);
 }
 
+.card-info > button > a {
+  text-decoration: none;
+  color: #fff;
+}
 /* Card Container style ends */
 
 @media only screen and (max-width: 648px) {
@@ -522,4 +526,97 @@ footer {
   border: 1px solid black;
   border-radius: 5px;
 }
+
+#newPass{
+  margin-bottom: 7%;
+}
+
+.send{
+  border: none;
+  outline: none;
+  
+  border: 1px solid black;
+  border-radius: 10px;
+}
 /* User Profile stlye ends */
+
+/* Subpages style starts here */
+
+.resultDiv {
+  margin-top: 12%;
+}
+
+.searchDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchDiv form {
+  width: 70%;
+}
+
+.searchDiv form input[type="text"] {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #000049;
+  padding: 1% 2.5%;
+  margin-right: 2%;
+}
+
+.searchDiv form input[type="submit"] {
+  padding: 2% 4%;
+  background: linear-gradient(45deg, #004181, #2c2c2c);
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 15px;
+}
+
+/* Card style starts here */
+
+.myCard {
+  padding: 0;
+  width: 800px;
+  background: linear-gradient(45deg, #004181, #2c2c2c);
+  color: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  margin: 0 auto;
+}
+
+.poster {
+  max-width: 50%;
+  max-height: 100%;
+}
+
+.myInfo {
+  padding: 7%;
+}
+
+.title,
+.director {
+  margin: 0;
+}
+
+.director {
+  color: #dad8d8;
+}
+
+.mysInfo span {
+  border-right: 1px solid #fff;
+  padding: 0 5px;
+}
+
+.mysInfo span:first-child {
+  padding-left: 0;
+}
+
+.mysInfo span:last-child {
+  border: none;
+}
+
+/* Card style ends here */
+
+/* Subpage style ends here */

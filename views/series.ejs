@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Entertainment</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    <!-- JS -->
+    <script src="../js/animation.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar my-style-nav">
+      <div class="d-flex justify-content-between myWidth">
+        <div class="fluid-container">
+          <a
+            class="navbar-brand d-flex justify-content-center ps-2 rounded-pill"
+            href="/home"
+          >
+            <img
+              src="/images/logoed.png"
+              alt="Entertainment"
+              width="135"
+              height="45"
+              class="rounded-pill"
+            />
+          </a>
+        </div>
+        <div class="user d-flex justify-content-between align-middle">
+          <p><%= cred.username%></p>
+          <img src="/images/user.jpg" alt="user" />
+        </div>
+      </div>
+    </nav>
+    <div class="dropdown">
+      <a href="/profile">My Profile</a>
+      <a href="/logout">LOGOUT</a>
+    </div>
+
+    <div class="fluid-container resultDiv">
+      <div class="row">
+        <div class="col-12 col-md-4 searchDiv">
+          <form action="/series" method="post">
+            <input
+              type="text"
+              name="seriesName"
+              id="seriesName"
+              placeholder="Enter the series name"
+              required
+            />
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+  
+        <% if (message == "") { %>
+        <div class="col-12 col-md-8 myCard">
+          <img src= <%= seriesData.poster %> alt="poster" class="poster" />
+          <div class="myInfo">
+            <h1 class="title"><%= seriesData.name %></h1>
+            <p class="director">Directed by : <%= seriesData.director %></p>
+            <p class="mysInfo">
+              <span> <%= seriesData.rated %></span>
+              <span> <%= seriesData.runTime %> </span>
+              <span><%= seriesData.genre %></span>
+              <span> <%= seriesData.year %></span>
+            </p>
+            <p class="plot"><%= seriesData.plot %></p>
+            <p class="rating">Rating : <span><%= seriesData.rating %></span>/10</p>
+          </div>
+          <% } else { %>
+          <img
+            src="/images/series.jpg"
+            alt="poster"
+            class="poster"
+          />
+          <div class="seriesInfo">
+            <p class="errorMessage"><%= message %></p>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
